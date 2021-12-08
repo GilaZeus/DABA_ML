@@ -56,35 +56,46 @@ CREATE TABLE Film
             (ist_3D IN ('Y', 'N'))
 );
 
-CREATE TRIGGER check_überlänge
-    BEFORE INSERT ON Film
-
-
 CREATE TABLE Spielplan
 (
-  Von_Spielplan INT NOT NULL,
-  Bis_Spielplan INT NOT NULL,
-  Spielplan_ID INT NOT NULL,
-  Jahr_Spielplan INT NOT NULL,
-  Kino_ID INT NOT NULL,
-  Film_ID INT NOT NULL,
-  PRIMARY KEY (Spielplan_ID),
-  FOREIGN KEY (Kino_ID) REFERENCES Kino(Kino_ID),
-  FOREIGN KEY (Film_ID) REFERENCES Film(Film_ID)
+    Spielplan_ID      INT             PRIMARY KEY,
+    Kino_ID           INT             NOT NULL,
+    Film_ID           INT             NOT NULL,
+    Jahr_Spielplan    SMALLINT        NOT NULL,
+    Von_Spielplan     SMALLINT        NOT NULL,
+    Bis_Spielplan     SMALLINT        NOT NULL,
+    FOREIGN KEY (Kino_ID) REFERENCES Kino(Kino_ID),
+    FOREIGN KEY (Film_ID) REFERENCES Film(Film_ID),
+    CHECK
+            (Von_Spielplan > 0 AND Von_Spielplan < 54),
+    CHECK
+            (Bis_Spielplan > 0 AND Bis_Spielplan < 54),
+    CHECK
+            (Bis_Spielplan > Von_Spielplan),
+    CHECK
+            (Jahr_Spielplan > 1999)
 );
 
 CREATE TABLE Preisliste
 (
-  Preisliste_ID INT NOT NULL,
-  PRIMARY KEY (Preisliste_ID)
+  Preisliste_ID       INT             PRIMARY KEY
 );
+
+-- Bis hier wurde alles angelegt.
 
 CREATE TABLE Preismodifikation
 (
-  Preismodifikation_ID INT NOT NULL,
-  Art INT NOT NULL,
-  Höhe INT NOT NULL,
-  PRIMARY KEY (Preismodifikation_ID)
+    Preismodifikation_ID  INT         PRIMARY KEY,
+    Art                   VARCHAR(10) NOT NULL,
+    Höhe                  INT         NOT NULL,
+    CHECK
+            (Art IN (
+                'Abendvorstellung',
+                'ist_Überlänge',
+                'ist_3D'
+                /* Wir sollen ganz am Ende schauen, welche Parameter und dessen Zustände
+                   haben wir überhaupt. */
+            ))
 );
 
 CREATE TABLE Basispreis
