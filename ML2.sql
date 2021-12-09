@@ -18,17 +18,19 @@ CREATE TABLE Vorführsaal
 (
   Saal_ID            VARCHAR(10),
   Kino_ID            INT,
-  Rangsystem_ID      INT             NOT NULL,
+  Rangsystem_ID      INT              NOT NULL,
   PRIMARY KEY
         (Saal_ID, Kino_ID),
   FOREIGN KEY
         (Kino_ID)
         REFERENCES
-          Kino(Kino_ID),
+          Kino(Kino_ID)
+        ON DELETE CASCADE,
   FOREIGN KEY
         (Rangsystem_ID)
         REFERENCES
           Rangsystem(Rangsystem_ID)
+        ON DELETE SET NULL
 );
 
 CREATE TABLE Rangsystem
@@ -46,6 +48,7 @@ CREATE TABLE Rang
         (Rangsystem_ID)
         REFERENCES
           Rangsystem(Rangsystem_ID)
+        ON DELETE CASCADE
 );
 
 -- TRIGGER: Reihenfolge von Rängen soll beachtet werden
@@ -62,11 +65,13 @@ CREATE TABLE Reihe
   FOREIGN KEY
         (Saal_ID, Kino_ID)
         REFERENCES
-          Vorführsaal(Saal_ID, Kino_ID),
+          Vorführsaal(Saal_ID, Kino_ID)
+        ON DELETE CASCADE,
   FOREIGN KEY
         (Rangnummer, Rangsystem_ID)
         REFERENCES
           Rang(Rangnummer, Rangsystem_ID)
+        ON DELETE SET NULL
 );
 
 -- TRIGGER: Reihenfolge der Reihen
@@ -84,6 +89,7 @@ CREATE TABLE Sitzplatz
         (Reihennummer, Saal_ID, Kino_ID)
         REFERENCES
           Reihe(Reihennummer, Saal_ID, Kino_ID)
+        ON DELETE CASCADE
 );
 
 -- TRIGGER: Reihenfolge der Sitzplätze
@@ -118,7 +124,10 @@ CREATE TABLE Film
   PRIMARY KEY
           (Film_ID),
   FOREIGN KEY
-          (Genre_ID)  REFERENCES Genre(Genre_ID),
+          (Genre_ID)
+          REFERENCES
+            Genre(Genre_ID)
+          ON DELETE SET NULL,
   UNIQUE
           (Titel, Produktionsfirma, Produktionsjahr),
   CHECK
@@ -150,11 +159,13 @@ CREATE TABLE Spielplan
   FOREIGN KEY
           (Kino_ID)
           REFERENCES
-            Kino(Kino_ID),
+            Kino(Kino_ID)
+          ON DELETE CASCADE,
   FOREIGN KEY
           (Film_ID)
             REFERENCES
-              Film(Film_ID),
+              Film(Film_ID)
+            ON DELETE CASCADE,
   UNIQUE
           (Kino_ID, Film_ID),
   CHECK
@@ -204,15 +215,18 @@ CREATE TABLE Zeitplan
   FOREIGN KEY
           (Spielplan_ID)
           REFERENCES
-            Spielplan(Spielplan_ID),
+            Spielplan(Spielplan_ID)
+          ON DELETE CASCADE,
   FOREIGN KEY
           (Zeitslot_ID)
           REFERENCES
-            Zeitslot(Zeitslot_ID),
+            Zeitslot(Zeitslot_ID)
+          ON DELETE CASCADE,
   FOREIGN KEY
           (Wochentag)
           REFERENCES
             Wochentag(Wochentag)
+          ON DELETE CASCADE
 );
 
 CREATE TABLE Lokalität
@@ -225,11 +239,13 @@ CREATE TABLE Lokalität
   FOREIGN KEY
           (Saal_ID, Kino_ID)
           REFERENCES
-            Vorführsaal(Saal_ID, Kino_ID),
+            Vorführsaal(Saal_ID, Kino_ID)
+          ON DELETE CASCADE,
   FOREIGN KEY
           (Spielplan_ID)
           REFERENCES
             Spielplan(Spielplan_ID)
+          ON DELETE CASCADE
 );
 
 CREATE TABLE Vorführung
@@ -246,15 +262,18 @@ CREATE TABLE Vorführung
   FOREIGN KEY
           (Spielplan_ID)
           REFERENCES
-            Spielplan(Spielplan_ID),
+            Spielplan(Spielplan_ID)
+          ON DELETE CASCADE,
   FOREIGN KEY
           (Zeitslot_ID)
           REFERENCES
-            Zeitslot(Zeitslot_ID),
+            Zeitslot(Zeitslot_ID)
+          ON DELETE CASCADE,
   FOREIGN KEY
           (Saal_ID, Kino_ID)
           REFERENCES
             Vorführsaal(Saal_ID, Kino_ID)
+          ON DELETE CASCADE
 );
 
 CREATE TABLE Preisliste
@@ -275,11 +294,13 @@ CREATE TABLE Gültigkeitsbereich
   FOREIGN KEY
           (Kino_ID)
           REFERENCES
-            Kino(Kino_ID),
+            Kino(Kino_ID)
+          ON DELETE CASCADE,
   FOREIGN KEY
           (Preisliste_ID)
           REFERENCES
-            Preisliste(Preisliste_ID),
+            Preisliste(Preisliste_ID)
+          ON DELETE CASCADE,
   CHECK
           (Bis_Preisliste > Von_Preisliste)
 );
@@ -304,11 +325,13 @@ CREATE TABLE Rang_Preis
   FOREIGN KEY
           (Rangnummer, Rangsystem_ID)
           REFERENCES
-            Rang(Rangnummer, Rangsystem_ID),
+            Rang(Rangnummer, Rangsystem_ID)
+          ON DELETE CASCADE,
   FOREIGN KEY
           (Basispreis_ID)
           REFERENCES
             Basispreis(Basispreis_ID)
+          ON DELETE CASCADE
 );
 
 CREATE TABLE Preis_Anwendung
@@ -320,11 +343,13 @@ CREATE TABLE Preis_Anwendung
   FOREIGN KEY
           (Basispreis_ID)
           REFERENCES
-            Basispreis(Basispreis_ID),
+            Basispreis(Basispreis_ID)
+          ON DELETE CASCADE,
   FOREIGN KEY
           (Preisliste_ID)
           REFERENCES
             Preisliste(Preisliste_ID)
+          ON DELETE CASCADE
 );
 
 CREATE TABLE Preismodifikation
@@ -345,11 +370,13 @@ CREATE TABLE Modifikation_Benutzung
   FOREIGN KEY
           (Preismodifikation_ID)
           REFERENCES
-            Preismodifikation(Preismodifikation_ID),
+            Preismodifikation(Preismodifikation_ID)
+          ON DELETE CASCADE,
   FOREIGN KEY
           (Preisliste_ID)
           REFERENCES
             Preisliste(Preisliste_ID)
+          ON DELETE CASCADE
 );
 
 CREATE TABLE Kundengruppe
@@ -377,15 +404,18 @@ CREATE TABLE Karte
   FOREIGN KEY
           (Sitznummer, Reihennummer, Saal_ID, Kino_ID)
           REFERENCES
-            Sitzplatz(Sitznummer, Reihennummer, Saal_ID, Kino_ID),
+            Sitzplatz(Sitznummer, Reihennummer, Saal_ID, Kino_ID)
+          ON DELETE CASCADE,
   FOREIGN KEY
           (Vorführung_ID)
           REFERENCES
-            Vorführung(Vorführung_ID),
+            Vorführung(Vorführung_ID)
+          ON DELETE CASCADE,
   FOREIGN KEY
           (Kundengruppe_ID)
           REFERENCES
-            Kundengruppe(Kundengruppe_ID),
+            Kundengruppe(Kundengruppe_ID)
+          ON DELETE CASCADE,
   UNIQUE
           (Sitznummer, Reihennummer, Saal_ID, Kino_ID, Vorführung_ID)
   /* Definiere die Kalkulation vom Preis */
