@@ -38,7 +38,7 @@ CREATE TABLE Rangsystem
 
 CREATE TABLE Rang
 (
-  Rangnummer         INT             GENERATED ALWAYS AS IDENTITY,
+  Rangnummer         INT,
   Rangsystem_ID      INT,
   PRIMARY KEY
         (Rangnummer, Rangsystem_ID),
@@ -48,8 +48,7 @@ CREATE TABLE Rang
           Rangsystem(Rangsystem_ID)
 );
 
--- TRIGGER: Reihenfolge
--- TRIGGER; Gehören nur Ränge mit dieselben Rangsystemen einem Saal?
+-- TRIGGER: Reihenfolge von Rängen soll beachtet werden
 
 CREATE TABLE Reihe
 (
@@ -70,11 +69,12 @@ CREATE TABLE Reihe
           Rang(Rangnummer, Rangsystem_ID)
 );
 
--- TRIGGER: Reihenfolge
+-- TRIGGER: Reihenfolge der Reihen
+-- TRIGGER; Gehören nur Ränge mit dieselben Rangsystemen einem Saal?
 
 CREATE TABLE Sitzplatz
 (
-  Sitznummer        INT             GENERATED ALWAYS AS IDENTITY,
+  Sitznummer        INT             NOT NULL,
   Reihennummer      INT,
   Saal_ID           INT,
   Kino_ID           INT,
@@ -86,7 +86,17 @@ CREATE TABLE Sitzplatz
           Reihe(Reihennummer, Saal_ID, Kino_ID)
 );
 
--- TRIGGER: Reihenfolge
+-- TRIGGER: Reihenfolge der Sitzplätze
+
+CREATE TABLE Genre
+(
+  Genre_ID            INT            GENERATED ALWAYS AS IDENTITY,
+  Bezeichnug          VARCHAR(20)    NOT NULL,
+  PRIMARY KEY
+            (Genre_ID),
+  UNIQUE
+            (Bezeichnug)
+);
 
 CREATE TABLE Film
 (
@@ -95,7 +105,7 @@ CREATE TABLE Film
   Produktionsfirma    VARCHAR(50)     NOT NULL,
   Produktionsjahr     INT             NOT NULL,
   Altersfreigabe      VARCHAR(5)      NOT NULL,
-  Genre               VARCHAR(9)      NOT NULL,
+  Genre_ID            INT             NOT NULL,
   Beschreibung        VARCHAR(255),
   Spieldauer          INT             NOT NULL,
   ist_3D              VARCHAR(1)      DEFAULT 'N',
@@ -107,6 +117,8 @@ CREATE TABLE Film
            END),
   PRIMARY KEY
           (Film_ID),
+  FOREIGN KEY
+          (Genre_ID)  REFERENCES Genre(Genre_ID),
   UNIQUE
           (Titel, Produktionsfirma, Produktionsjahr),
   CHECK
@@ -119,15 +131,6 @@ CREATE TABLE Film
               'FSK_16',
               'FSK_18',
               'Lehr')),
-  CHECK
-          (Genre IN (
-              'Komödie',
-              'Action',
-              'Thriller',
-              'Drama',
-              'Romance',
-              'Horror',
-              'Animation')),
   CHECK
           (Spieldauer >= 20),
   CHECK
@@ -293,12 +296,19 @@ CREATE TABLE Basispreis
 
 CREATE TABLE Rang_Preis
 (
-  Rangnummer INT NOT NULL,
-  Rangsystem_ID INT NOT NULL,
-  Basispreis_ID INT NOT NULL,
-  PRIMARY KEY (Rangnummer, Rangsystem_ID, Basispreis_ID),
-  FOREIGN KEY (Rangnummer, Rangsystem_ID) REFERENCES Rang(Rangnummer, Rangsystem_ID),
-  FOREIGN KEY (Basispreis_ID) REFERENCES Basispreis(Basispreis_ID)
+  Rangnummer            INT,
+  Rangsystem_ID         INT,
+  Basispreis_ID         INT,
+  PRIMARY KEY
+          (Rangnummer, Rangsystem_ID, Basispreis_ID),
+  FOREIGN KEY
+          (Rangnummer, Rangsystem_ID)
+          REFERENCES
+            Rang(Rangnummer, Rangsystem_ID),
+  FOREIGN KEY
+          (Basispreis_ID)
+          REFERENCES
+            Basispreis(Basispreis_ID)
 );
 
 CREATE TABLE Preis_Anwendung
@@ -319,31 +329,62 @@ CREATE TABLE Preis_Anwendung
 
 CREATE TABLE Preismodifikation
 (
-  Preismodifikation_ID  INT         PRIMARY KEY,
-  Art                   VARCHAR(10) NOT NULL,
-  Höhe                  INT         NOT NULL
+  Preismodifikation_ID  INT         GENERATED ALWAYS AS IDENTITY,
+  Art                   VARCHAR(20) NOT NULL,
+  Höhe                  FLOAT       NOT NULL,
+  PRIMARY KEY
+          (Preismodifikation_ID)
 );
 
 CREATE TABLE Modifikation_Benutzung
 (
-  Preismodifikation_ID INT NOT NULL,
-  Preisliste_ID INT NOT NULL,
-  PRIMARY KEY (Preismodifikation_ID, Preisliste_ID),
-  FOREIGN KEY (Preismodifikation_ID) REFERENCES Preismodifikation(Preismodifikation_ID),
-  FOREIGN KEY (Preisliste_ID) REFERENCES Preisliste(Preisliste_ID)
+  Preismodifikation_ID  INT,
+  Preisliste_ID         INT,
+  PRIMARY KEY
+          (Preismodifikation_ID, Preisliste_ID),
+  FOREIGN KEY
+          (Preismodifikation_ID)
+          REFERENCES
+            Preismodifikation(Preismodifikation_ID),
+  FOREIGN KEY
+          (Preisliste_ID)
+          REFERENCES
+            Preisliste(Preisliste_ID)
+);
+
+CREATE TABLE Kundengruppe
+(
+  Kundengruppe_ID       INT         GENERATED ALWAYS AS IDENTITY,
+  Bezeichnug            VARCHAR(20) NOT NULL,
+  PRIMARY KEY
+          (Kundengruppe_ID),
+  UNIQUE
+          (Bezeichnug)
 );
 
 CREATE TABLE Karte
 (
-  Reservierung INT,
-  Kundengruppe INT NOT NULL,
-  Kartennummer INT NOT NULL,
-  Sitznummer INT NOT NULL,
-  Reihennummer INT NOT NULL,
-  Saal_ID INT NOT NULL,
-  Kino_ID INT NOT NULL,
-  Vorführung_ID INT NOT NULL,
+  Kartennummer          INT,
+  VERKAUFSPREIS         FLOAT       NOT NULL,
+  Reservierung          VARCHAR(30),
+  Kundengruppe_ID       INT,
+  Sitznummer            INT,
+  Reihennummer          INT,
+  Saal_ID               INT,
+  Kino_ID               INT,
+  Vorführung_ID         INT,
   PRIMARY KEY (Kartennummer),
-  FOREIGN KEY (Sitznummer, Reihennummer, Saal_ID, Kino_ID) REFERENCES Sitzplatz(Sitznummer, Reihennummer, Saal_ID, Kino_ID),
-  FOREIGN KEY (Vorführung_ID) REFERENCES Vorführung(Vorführung_ID)
+  FOREIGN KEY
+          (Sitznummer, Reihennummer, Saal_ID, Kino_ID)
+          REFERENCES
+            Sitzplatz(Sitznummer, Reihennummer, Saal_ID, Kino_ID),
+  FOREIGN KEY
+          (Vorführung_ID)
+          REFERENCES
+            Vorführung(Vorführung_ID),
+  FOREIGN KEY
+          (Kundengruppe_ID)
+          REFERENCES
+            Kundengruppe(Kundengruppe_ID)
+  /* Definiere die Kalkulation vom Preis */
 );
