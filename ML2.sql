@@ -385,6 +385,8 @@ CREATE TABLE Karte
   FOREIGN KEY
           (Kundengruppe_ID)
           REFERENCES
-            Kundengruppe(Kundengruppe_ID)
+            Kundengruppe(Kundengruppe_ID),
+  UNIQUE
+          (Sitznummer, Reihennummer, Saal_ID, Kino_ID, Vorführung_ID)
   /* Definiere die Kalkulation vom Preis */
 );
