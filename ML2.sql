@@ -20,7 +20,7 @@ CREATE TABLE Vorführsaal
 (
     Saal_ID     INT         GENERATED ALWAYS AS IDENTITY,
     Kino_ID     INT,
-    Bezeichnug  VARCHAR(30),
+    Bezeichnung VARCHAR(30),
     PRIMARY KEY
     (
         Saal_ID,
@@ -58,12 +58,12 @@ CREATE TABLE Zeitslot
 (
     Zeitslot_ID INT         GENERATED ALWAYS AS IDENTITY,
     Uhrzeit     INT         NOT NULL,
-    Bezeichnug  VARCHAR(30) NOT NULL,
+    Bezeichnung VARCHAR(30) NOT NULL,
     PRIMARY KEY (Zeitslot_ID),
     UNIQUE
     (
         Uhrzeit,
-        Bezeichnug
+        Bezeichnung
     ),
     CONSTRAINT correct_time CHECK
         (Uhrzeit BETWEEN 0 AND 1439)
@@ -246,7 +246,12 @@ CREATE TABLE Film
     Beschreibung        VARCHAR(255),
     Spieldauer          INT             NOT NULL,
     ist_3D              VARCHAR(1)      NOT NULL,
-    ist_Überlänge       VARCHAR(1)      NOT NULL,
+    ist_Überlänge       VARCHAR(1)      GENERATED ALWAYS AS
+          (CASE
+              WHEN    Spieldauer > 120
+              THEN    'Y'
+              ELSE    'N'
+           END),
     PRIMARY KEY (Film_ID),
     FOREIGN KEY
         (Genre_ID)
@@ -290,14 +295,6 @@ CREATE TABLE Spielplan
     FOREIGN KEY (Film_ID)
         REFERENCES Film(Film_ID)
         ON DELETE CASCADE,
-    UNIQUE
-    (
-        Kino_ID,
-        Film_ID,
-        Jahr_Spielplan,
-        Von_Spielplan,
-        Bis_Spielplan
-    ),
     CONSTRAINT correct_von CHECK
     (
         Von_Spielplan > 0   AND
@@ -401,10 +398,87 @@ CREATE TABLE Lokalität
         ON DELETE CASCADE
 );
 
+CREATE FUNCTION calculate_price_function
+(
+    liste                  INT,
+    rangnr                 INT,
+    kundengr_Bezeichnung   VARCHAR(30),
+    i3D                    VARCHAR(1),
+    iLänge                 VARCHAR(1),
+    zeitslot_Bezeichnung   VARCHAR(30)
+)
+RETURN FLOAT
+IS
+    final_price FLOAT := 0;
+    buff        FLOAT := 0;
+BEGIN
+    /* Basispreis-Kalkulation.*/
+    SELECT Wert
+    INTO final_price
+    FROM Basispreis WHERE
+    (
+        SELECT Basispreis_ID FROM Rang_Preis
+            WHERE Rangnummer = rangnr AND
+                  Basispreis_ID IN
+                  (
+                      SELECT Basispreis_ID FROM Preis_Anwendung
+                        WHERE Preisliste_ID = liste
+                  )
+    );
+    
+    /* 3D-Aufschlag-Kalkulation.*/
+    IF
+    (
+        i3D = 'Y' AND 'ist_3D' IN (SELECT Art FROM Modifikation_Benutzung
+            WHERE Preisliste_ID = liste)
+    )
+    THEN
+        SELECT Höhe INTO buff FROM Modifikation_Benutzung
+        WHERE Preisliste = liste AND Art = 'ist_3D';
+    final_price := final_price + buff;
+
+    /* Überlängenaufschlag-Kalkulation.*/
+    buff := 0;
+    IF
+    (
+        iLänge = 'Y' AND 'ist_Überlänge' IN (SELECT Art FROM Modifikation_Benutzung
+            WHERE Preisliste_ID = liste)
+    )
+    THEN
+        SELECT Höhe INTO buff FROM Modifikation_Benutzung
+        WHERE Preisliste = liste AND Art = 'ist_Überlänge';
+    final_price := final_price + buff;
+
+    /* Kundengruppenaufschlag-Kalkulation.*/
+    buff := 0;
+    IF
+    (
+        kundengr_Bezeichnung IN (SELECT Art FROM Modifikation_Benutzung
+            WHERE Preisliste_ID = liste)
+    )
+    THEN
+        SELECT Höhe INTO buff FROM Modifikation_Benutzung
+            WHERE Preisliste = liste AND Art = kundengr_Bezeichnung;
+    final_price := final_price + buff;
+
+    /* Zeitslot-Aufschlag-Kalkulation.*/
+    buff := 0;
+    IF
+    (
+        zeitslot_Bezeichnung IN (SELECT Art FROM Modifikation_Benutzung
+            WHERE Preisliste_ID = liste)
+    )
+    THEN
+        SELECT Höhe INTO buff FROM Modifikation_Benutzung
+            WHERE Preisliste = liste AND Art = zeitslot_Bezeichnung;
+    final_price := final_price + buff;
+
+    RETURN final_price;
+END;
+
 CREATE TABLE Karte
 (
     Kartennummer    INT         GENERATED ALWAYS AS IDENTITY,
-    Verkaufspreis   FLOAT       NOT NULL,
     Reservierung    VARCHAR(30),
     Kundengruppe_ID INT         NOT NULL,
     Sitznummer      INT         NOT NULL,
@@ -412,6 +486,8 @@ CREATE TABLE Karte
     Saal_ID         INT         NOT NULL,
     Kino_ID         INT         NOT NULL,
     Vorführung_ID   INT         NOT NULL,
+    Verkaufspreis   FLOAT,
+        ,
     PRIMARY KEY (Kartennummer),
     FOREIGN KEY
     (
@@ -432,3 +508,41 @@ CREATE TABLE Karte
     FOREIGN KEY (Kundengruppe_ID)
         REFERENCES Kundengruppe(Kundengruppe_ID)
 );
+
+CREATE TRIGGER calculate_price
+    BEFORE INSERT ON Karte
+    REFERENCING NEW AS new_row
+    FOR EACH ROW
+BEGIN
+    DECLARE liste                  INT,
+    DECLARE rangnr                 INT,
+    DECLARE kundengr_Bezeichnung   VARCHAR(30),
+    DECLARE i3D                    VARCHAR(1),
+    DECLARE iLänge                 VARCHAR(1),
+    DECLARE zeitslot_Bezeichnung   VARCHAR(30),
+
+    SELECT Preisliste_ID INTO liste FROM Vorführung
+        WHERE Vorführung_ID = new_row.Vorführung_ID;
+    SELECT Rangnummer INTO rangnr FROM Reihe
+        WHERE Reihennummer = new_row.Reihennummer AND
+              Saal_ID = new_row.Saal_ID AND
+              Kino_ID = new_row.Kino_ID;
+    SELECT Bezeichnung INTO kundengr_Bezeichnung FROM Kundengruppe
+        WHERE Kundengruppe_ID = new_row.Kundengruppe_ID;
+    SELECT Bezeichnung into zeitslot_Bezeichnung FROM Zeitslot
+        WHERE Zeitslot_ID IN
+        (
+            SELECT Zeitslot_ID FROM Vorführung
+                WHERE Vorführung_ID = new_row.Vorführung_ID
+        );
+
+    new_row.Verkaufspreis := calculate_price_function
+    (
+        liste,
+        rangnr,
+        kundengr_Bezeichnung,
+        new_row.ist_3D,
+        new_row.ist_Überlänge,
+        zeitslot_Bezeichnung
+    );
+END;
