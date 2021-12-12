@@ -15,6 +15,7 @@ CREATE TABLE Kino
     ),
     CONSTRAINT correct_plz CHECK
         (PLZ BETWEEN 0 AND 99999)
+);
 
 CREATE TABLE Vorführsaal
 (
@@ -49,7 +50,7 @@ CREATE TABLE Basispreis
 (
     Basispreis_ID   INT     GENERATED ALWAYS AS IDENTITY,
     Wert            FLOAT   NOT NULL,
-    PRIMARY KEY (Basispreis_ID)
+    PRIMARY KEY (Basispreis_ID),
     CONSTRAINT correct_price CHECK
         (Wert >= 0)
 );
@@ -71,7 +72,8 @@ CREATE TABLE Zeitslot
 
 CREATE TABLE Rang
 (
-    Rangnummer  INT PRIMARY KEY
+    Rangnummer  INT GENERATED ALWAYS AS IDENTITY,
+    PRIMARY KEY (Rangnummer)
 );
 
 CREATE TABLE Reihe
@@ -374,7 +376,7 @@ CREATE TABLE Zeitplan
 CREATE TABLE Lokalität
 (
     Spielplan_ID    INT,
-    Saal_ID         VARCHAR(30),
+    Saal_ID         INT,
     Kino_ID         INT,
     PRIMARY KEY
     (
@@ -398,6 +400,7 @@ CREATE TABLE Lokalität
         ON DELETE CASCADE
 );
 
+/*
 CREATE FUNCTION calculate_price_function
 (
     liste                  INT,
@@ -412,7 +415,6 @@ IS
     final_price FLOAT := 0;
     buff        FLOAT := 0;
 BEGIN
-    /* Basispreis-Kalkulation.*/
     SELECT Wert
     INTO final_price
     FROM Basispreis WHERE
@@ -426,7 +428,6 @@ BEGIN
                   )
     );
     
-    /* 3D-Aufschlag-Kalkulation.*/
     IF
     (
         i3D = 'Y' AND 'ist_3D' IN (SELECT Art FROM Modifikation_Benutzung
@@ -437,7 +438,6 @@ BEGIN
         WHERE Preisliste = liste AND Art = 'ist_3D';
     final_price := final_price + buff;
 
-    /* Überlängenaufschlag-Kalkulation.*/
     buff := 0;
     IF
     (
@@ -449,7 +449,6 @@ BEGIN
         WHERE Preisliste = liste AND Art = 'ist_Überlänge';
     final_price := final_price + buff;
 
-    /* Kundengruppenaufschlag-Kalkulation.*/
     buff := 0;
     IF
     (
@@ -461,7 +460,6 @@ BEGIN
             WHERE Preisliste = liste AND Art = kundengr_Bezeichnung;
     final_price := final_price + buff;
 
-    /* Zeitslot-Aufschlag-Kalkulation.*/
     buff := 0;
     IF
     (
@@ -475,6 +473,7 @@ BEGIN
 
     RETURN final_price;
 END;
+*/
 
 CREATE TABLE Karte
 (
@@ -487,7 +486,6 @@ CREATE TABLE Karte
     Kino_ID         INT         NOT NULL,
     Vorführung_ID   INT         NOT NULL,
     Verkaufspreis   FLOAT,
-        ,
     PRIMARY KEY (Kartennummer),
     FOREIGN KEY
     (
@@ -509,6 +507,7 @@ CREATE TABLE Karte
         REFERENCES Kundengruppe(Kundengruppe_ID)
 );
 
+/*
 CREATE TRIGGER calculate_price
     BEFORE INSERT ON Karte
     REFERENCING NEW AS new_row
@@ -546,3 +545,4 @@ BEGIN
         zeitslot_Bezeichnung
     );
 END;
+*/
