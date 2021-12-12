@@ -1,11 +1,12 @@
 CREATE TABLE Kino
 (
-    Kino_ID     INT         PRIMARY KEY,
+    Kino_ID     INT         GENERATED ALWAYS AS IDENTITY,
     Hausnr      VARCHAR(7)  NOT NULL,
     Straße      VARCHAR(50) NOT NULL,
     PLZ         INT         NOT NULL,
     Ort         VARCHAR(50) NOT NULL,
     Name        VARCHAR(50) NOT NULL,
+    PRIMARY KEY (Kino_ID),
     UNIQUE
     (
         Hausnr,
@@ -17,7 +18,7 @@ CREATE TABLE Kino
 
 CREATE TABLE Vorführsaal
 (
-    Saal_ID     INT,
+    Saal_ID     INT         GENERATED ALWAYS AS IDENTITY,
     Kino_ID     INT,
     Bezeichnug  VARCHAR(30),
     PRIMARY KEY
@@ -32,29 +33,33 @@ CREATE TABLE Vorführsaal
 
 CREATE TABLE Preisliste
 (
-    Preisliste_ID   INT PRIMARY KEY
+    Preisliste_ID   INT GENERATED ALWAYS AS IDENTITY,
+    PRIMARY KEY (Preisliste_ID)
 );
 
 CREATE TABLE Preismodifikation
 (
-    Preismodifikation_ID    INT         PRIMARY KEY,
+    Preismodifikation_ID    INT         GENERATED ALWAYS AS IDENTITY,
     Art                     VARCHAR(30) NOT NULL,
-    Höhe                    FLOAT       NOT NULL
+    Höhe                    FLOAT       NOT NULL,
+    PRIMARY KEY (Preismodifikation_ID)
 );
 
 CREATE TABLE Basispreis
 (
-    Basispreis_ID   INT     PRIMARY KEY,
+    Basispreis_ID   INT     GENERATED ALWAYS AS IDENTITY,
     Wert            FLOAT   NOT NULL,
+    PRIMARY KEY (Basispreis_ID)
     CONSTRAINT correct_price CHECK
         (Wert >= 0)
 );
 
 CREATE TABLE Zeitslot
 (
-    Zeitslot_ID INT         PRIMARY KEY,
+    Zeitslot_ID INT         GENERATED ALWAYS AS IDENTITY,
     Uhrzeit     INT         NOT NULL,
     Bezeichnug  VARCHAR(30) NOT NULL,
+    PRIMARY KEY (Zeitslot_ID),
     UNIQUE
     (
         Uhrzeit,
@@ -72,7 +77,7 @@ CREATE TABLE Rang
 CREATE TABLE Reihe
 (
     Reihennummer    INT,
-    Saal_ID         VARCHAR(30),
+    Saal_ID         INT,
     Kino_ID         INT,
     Rangnummer      INT         NOT NULL,
     PRIMARY KEY
@@ -114,15 +119,17 @@ CREATE TABLE Wochentag
 
 CREATE TABLE Kundengruppe
 (
-    Kundengruppe_ID INT         PRIMARY KEY,
+    Kundengruppe_ID INT         GENERATED ALWAYS AS IDENTITY,
     Bezeichnung     VARCHAR(30) NOT NULL,
+    PRIMARY KEY (Kundengruppe_ID),
     UNIQUE (Bezeichnung)
 );
 
 CREATE TABLE Genre
 (
-    Genre_ID    INT         PRIMARY KEY,
+    Genre_ID    INT         GENERATED ALWAYS AS IDENTITY,
     Bezeichnung VARCHAR(30) NOT NULL,
+    PRIMARY KEY (Genre_ID),
     UNIQUE (Bezeichnung)
 );
 
@@ -204,7 +211,7 @@ CREATE TABLE Sitzplatz
 (
     Sitznummer      INT,
     Reihennummer    INT,
-    Saal_ID         VARCHAR(30),
+    Saal_ID         INT,
     Kino_ID         INT,
     PRIMARY KEY
     (
@@ -230,7 +237,7 @@ CREATE TABLE Sitzplatz
 
 CREATE TABLE Film
 (
-    Film_ID             INT             PRIMARY KEY,
+    Film_ID             INT             GENERATED ALWAYS AS IDENTITY,
     Titel               INT             NOT NULL,
     Produktionsfirma    INT             NOT NULL,
     Produktionsjahr     INT             NOT NULL,
@@ -240,6 +247,7 @@ CREATE TABLE Film
     Spieldauer          INT             NOT NULL,
     ist_3D              VARCHAR(1)      NOT NULL,
     ist_Überlänge       VARCHAR(1)      NOT NULL,
+    PRIMARY KEY (Film_ID),
     FOREIGN KEY
         (Genre_ID)
         REFERENCES Genre(Genre_ID),
@@ -269,12 +277,13 @@ CREATE TABLE Film
 
 CREATE TABLE Spielplan
 (
-    Spielplan_ID    INT PRIMARY KEY,
+    Spielplan_ID    INT GENERATED ALWAYS AS IDENTITY,
     Kino_ID         INT NOT NULL,
     Film_ID         INT NOT NULL,
     Jahr_Spielplan  INT NOT NULL,
     Von_Spielplan   INT NOT NULL,
     Bis_Spielplan   INT NOT NULL,
+    PRIMARY KEY (Spielplan_ID),
     FOREIGN KEY (Kino_ID)
         REFERENCES Kino(Kino_ID)
         ON DELETE CASCADE,
@@ -307,12 +316,13 @@ CREATE TABLE Spielplan
 
 CREATE TABLE Vorführung
 (
-    Vorführung_ID   INT         PRIMARY KEY,
+    Vorführung_ID   INT         GENERATED ALWAYS AS IDENTITY,
     Spielplan_ID    INT         NOT NULL,
     Zeitslot_ID     INT         NOT NULL,
     Wochentag       VARCHAR(2)  NOT NULL,
-    Saal_ID         VARCHAR(30) NOT NULL,
+    Saal_ID         INT         NOT NULL,
     Kino_ID         INT         NOT NULL,
+    PRIMARY KEY (Vorführung_ID),
     FOREIGN KEY (Spielplan_ID)
         REFERENCES Spielplan(Spielplan_ID)
         ON DELETE CASCADE,
@@ -393,15 +403,16 @@ CREATE TABLE Lokalität
 
 CREATE TABLE Karte
 (
-    Kartennummer    INT         PRIMARY KEY,
+    Kartennummer    INT         GENERATED ALWAYS AS IDENTITY,
     Verkaufspreis   FLOAT       NOT NULL,
     Reservierung    VARCHAR(30),
     Kundengruppe_ID INT         NOT NULL,
     Sitznummer      INT         NOT NULL,
     Reihennummer    INT         NOT NULL,
-    Saal_ID         VARCHAR(30) NOT NULL,
+    Saal_ID         INT         NOT NULL,
     Kino_ID         INT         NOT NULL,
     Vorführung_ID   INT         NOT NULL,
+    PRIMARY KEY (Kartennummer),
     FOREIGN KEY
     (
         Sitznummer,
