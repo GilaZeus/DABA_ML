@@ -236,7 +236,9 @@ CREATE TABLE Sitzplatz
             Saal_ID,
             Kino_ID
         )
-        ON DELETE CASCADE
+        ON DELETE CASCADE,
+    CONSTRAINT correct_sitz CHECK
+        (Sitznummer > 0)
 );
 
 CREATE TABLE Film
