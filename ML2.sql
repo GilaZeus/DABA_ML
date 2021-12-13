@@ -362,8 +362,8 @@ CREATE TABLE Zeitplan
     Wochentag       VARCHAR(2),
     PRIMARY KEY
     (
-        Zeitslot_ID,
         Spielplan_ID,
+        Zeitslot_ID,
         Wochentag
     ),
     FOREIGN KEY (Zeitslot_ID)
@@ -384,9 +384,9 @@ CREATE TABLE Lokalität
     Kino_ID         INT,
     PRIMARY KEY
     (
+        Spielplan_ID
         Saal_ID,
         Kino_ID,
-        Spielplan_ID
     ),
     FOREIGN KEY
     (
