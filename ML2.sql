@@ -377,108 +377,6 @@ CREATE TABLE Zeitplan
         ON DELETE CASCADE
 );
 
-CREATE TABLE Lokalität
-(
-    Spielplan_ID    INT,
-    Saal_ID         INT,
-    Kino_ID         INT,
-    PRIMARY KEY
-    (
-        Spielplan_ID,
-        Saal_ID,
-        Kino_ID
-    ),
-    FOREIGN KEY
-    (
-        Saal_ID,
-        Kino_ID
-    )
-        REFERENCES Vorführsaal
-        (
-            Saal_ID,
-            Kino_ID
-        )
-        ON DELETE CASCADE,
-    FOREIGN KEY (Spielplan_ID)
-        REFERENCES Spielplan(Spielplan_ID)
-        ON DELETE CASCADE
-);
-
-/*
-CREATE FUNCTION calculate_price_function
-(
-    liste                  INT,
-    rangnr                 INT,
-    kundengr_Bezeichnung   VARCHAR(30),
-    i3D                    VARCHAR(1),
-    iLänge                 VARCHAR(1),
-    zeitslot_Bezeichnung   VARCHAR(30)
-)
-RETURN FLOAT
-IS
-    final_price FLOAT := 0;
-    buff        FLOAT := 0;
-BEGIN
-    SELECT Wert
-    INTO final_price
-    FROM Basispreis WHERE
-    (
-        SELECT Basispreis_ID FROM Rang_Preis
-            WHERE Rangnummer = rangnr AND
-                  Basispreis_ID IN
-                  (
-                      SELECT Basispreis_ID FROM Preis_Anwendung
-                        WHERE Preisliste_ID = liste
-                  )
-    );
-    
-    IF
-    (
-        i3D = 'Y' AND 'ist_3D' IN (SELECT Art FROM Modifikation_Benutzung
-            WHERE Preisliste_ID = liste)
-    )
-    THEN
-        SELECT Höhe INTO buff FROM Modifikation_Benutzung
-        WHERE Preisliste = liste AND Art = 'ist_3D';
-    final_price := final_price + buff;
-
-    buff := 0;
-    IF
-    (
-        iLänge = 'Y' AND 'ist_Überlänge' IN (SELECT Art FROM Modifikation_Benutzung
-            WHERE Preisliste_ID = liste)
-    )
-    THEN
-        SELECT Höhe INTO buff FROM Modifikation_Benutzung
-        WHERE Preisliste = liste AND Art = 'ist_Überlänge';
-    final_price := final_price + buff;
-
-    buff := 0;
-    IF
-    (
-        kundengr_Bezeichnung IN (SELECT Art FROM Modifikation_Benutzung
-            WHERE Preisliste_ID = liste)
-    )
-    THEN
-        SELECT Höhe INTO buff FROM Modifikation_Benutzung
-            WHERE Preisliste = liste AND Art = kundengr_Bezeichnung;
-    final_price := final_price + buff;
-
-    buff := 0;
-    IF
-    (
-        zeitslot_Bezeichnung IN (SELECT Art FROM Modifikation_Benutzung
-            WHERE Preisliste_ID = liste)
-    )
-    THEN
-        SELECT Höhe INTO buff FROM Modifikation_Benutzung
-            WHERE Preisliste = liste AND Art = zeitslot_Bezeichnung;
-    final_price := final_price + buff;
-
-    RETURN final_price;
-END;
-*/
-
 CREATE TABLE Karte
 (
     Kartennummer    INT         GENERATED ALWAYS AS IDENTITY,
@@ -511,42 +409,31 @@ CREATE TABLE Karte
         REFERENCES Kundengruppe(Kundengruppe_ID)
 );
 
-/*
-CREATE TRIGGER calculate_price
-    BEFORE INSERT ON Karte
-    REFERENCING NEW AS new_row
-    FOR EACH ROW
-BEGIN
-    DECLARE liste                  INT,
-    DECLARE rangnr                 INT,
-    DECLARE kundengr_Bezeichnung   VARCHAR(30),
-    DECLARE i3D                    VARCHAR(1),
-    DECLARE iLänge                 VARCHAR(1),
-    DECLARE zeitslot_Bezeichnung   VARCHAR(30),
-
-    SELECT Preisliste_ID INTO liste FROM Vorführung
-        WHERE Vorführung_ID = new_row.Vorführung_ID;
-    SELECT Rangnummer INTO rangnr FROM Reihe
-        WHERE Reihennummer = new_row.Reihennummer AND
-              Saal_ID = new_row.Saal_ID AND
-              Kino_ID = new_row.Kino_ID;
-    SELECT Bezeichnung INTO kundengr_Bezeichnung FROM Kundengruppe
-        WHERE Kundengruppe_ID = new_row.Kundengruppe_ID;
-    SELECT Bezeichnung into zeitslot_Bezeichnung FROM Zeitslot
-        WHERE Zeitslot_ID IN
-        (
-            SELECT Zeitslot_ID FROM Vorführung
-                WHERE Vorführung_ID = new_row.Vorführung_ID
-        );
-
-    new_row.Verkaufspreis := calculate_price_function
+CREATE TABLE Lokalität
+(
+    Spielplan_ID    INT,
+    Saal_ID         INT,
+    Kino_ID         INT,
+    PRIMARY KEY
     (
-        liste,
-        rangnr,
-        kundengr_Bezeichnung,
-        new_row.ist_3D,
-        new_row.ist_Überlänge,
-        zeitslot_Bezeichnung
-    );
-END;
-*/
+        Spielplan_ID,
+        Saal_ID,
+        Kino_ID
+    ),
+    FOREIGN KEY
+    (
+        Saal_ID,
+        Kino_ID
+    )
+        REFERENCES Vorführsaal
+        (
+            Saal_ID,
+            Kino_ID
+        )
+        ON DELETE CASCADE,
+    FOREIGN KEY (Spielplan_ID)
+        REFERENCES Spielplan(Spielplan_ID)
+        ON DELETE CASCADE
+);
+
+commit;
