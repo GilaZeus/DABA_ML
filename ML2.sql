@@ -386,7 +386,7 @@ CREATE TABLE Lokalität
     (
         Spielplan_ID,
         Saal_ID,
-        Kino_ID,
+        Kino_ID
     ),
     FOREIGN KEY
     (
