@@ -100,7 +100,9 @@ CREATE TABLE Reihe
         )
         ON DELETE CASCADE,
     FOREIGN KEY (Rangnummer)
-        REFERENCES Rang(Rangnummer)
+        REFERENCES Rang(Rangnummer),
+    CONSTRAINT correct_reihe CHECK
+        (Reihennummer > 0)
 );
 
 CREATE TABLE Wochentag
