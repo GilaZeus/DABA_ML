@@ -384,7 +384,7 @@ CREATE TABLE Lokalität
     Kino_ID         INT,
     PRIMARY KEY
     (
-        Spielplan_ID
+        Spielplan_ID,
         Saal_ID,
         Kino_ID,
     ),
