@@ -1,0 +1,405 @@
+{
+    "Kinos": [
+        {
+            "Hausnr": "1",
+            "Straße": "Holzhofstraße",
+            "PLZ": 55116,
+            "Ort": "Mainz",
+            "Name": "CineStar Mainz",
+            "Vorführsäle": [
+                {
+                    "Bezeichnung": "1.",
+                    "Reihen": [
+                        {
+                            "Reihennummer": 1,
+                            "Rang": 1,
+                            "Plätze": 10
+                        },
+                        {
+                            "Reihennummer": 2,
+                            "Rang": 1,
+                            "Plätze": 10
+                        },
+                        {
+                            "Reihennummer": 3,
+                            "Rang": 2,
+                            "Plätze": 10
+                        },
+                        {
+                            "Reihennummer": 4,
+                            "Rang": 2,
+                            "Plätze": 10
+                        },
+                        {
+                            "Reihennummer": 5,
+                            "Rang": 3,
+                            "Plätze": 10
+                        }
+                    ]
+                },
+                {
+                    "Bezeichnung": "2.",
+                    "Reihen": [
+                        {
+                            "Reihennummer": 1,
+                            "Rang": 1,
+                            "Plätze": 10
+                        },
+                        {
+                            "Reihennummer": 2,
+                            "Rang": 1,
+                            "Plätze": 10
+                        },
+                        {
+                            "Reihennummer": 3,
+                            "Rang": 2,
+                            "Plätze": 10
+                        },
+                        {
+                            "Reihennummer": 4,
+                            "Rang": 2,
+                            "Plätze": 10
+                        },
+                        {
+                            "Reihennummer": 5,
+                            "Rang": 3,
+                            "Plätze": 10
+                        }
+                    ]
+                },
+                {
+                    "Bezeichnung": "3.",
+                    "Reihen": [
+                        {
+                            "Reihennummer": 1,
+                            "Rang": 1,
+                            "Plätze": 10
+                        },
+                        {
+                            "Reihennummer": 2,
+                            "Rang": 1,
+                            "Plätze": 10
+                        },
+                        {
+                            "Reihennummer": 3,
+                            "Rang": 2,
+                            "Plätze": 10
+                        },
+                        {
+                            "Reihennummer": 4,
+                            "Rang": 2,
+                            "Plätze": 10
+                        },
+                        {
+                            "Reihennummer": 5,
+                            "Rang": 3,
+                            "Plätze": 10
+                        },
+                        {
+                            "Reihennummer": 6,
+                            "Rang": 3,
+                            "Plätze": 10
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Hausnr": "2A",
+            "Straße": "August-Horch-Straße",
+            "PLZ": 56070,
+            "Ort": "Koblenz",
+            "Name": "KINOPOLIS",
+            "Vorführsäle": [
+                {
+                    "Bezeichnung": "der rote",
+                    "Reihen": [
+                        {
+                            "Reihennummer": 1,
+                            "Rang": 1,
+                            "Plätze": 10
+                        },
+                        {
+                            "Reihennummer": 2,
+                            "Rang": 1,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 3,
+                            "Rang": 2,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 4,
+                            "Rang": 2,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 5,
+                            "Rang": 2,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 6,
+                            "Rang": 2,
+                            "Plätze": 10
+                        },
+                        {
+                            "Reihennummer": 7,
+                            "Rang": 2,
+                            "Plätze": 10
+                        },
+                        {
+                            "Reihennummer": 8,
+                            "Rang": 2,
+                            "Plätze": 10
+                        }
+                    ]
+                },
+                {
+                    "Bezeichnung": "der blaue",
+                    "Reihen": [
+                        {
+                            "Reihennummer": 1,
+                            "Rang": 1,
+                            "Plätze": 10
+                        },
+                        {
+                            "Reihennummer": 2,
+                            "Rang": 1,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 3,
+                            "Rang": 2,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 4,
+                            "Rang": 2,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 5,
+                            "Rang": 2,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 6,
+                            "Rang": 2,
+                            "Plätze": 10
+                        },
+                        {
+                            "Reihennummer": 7,
+                            "Rang": 2,
+                            "Plätze": 10
+                        },
+                        {
+                            "Reihennummer": 8,
+                            "Rang": 2,
+                            "Plätze": 10
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Hausnr": "9",
+            "Straße": "Mainzer Straße",
+            "PLZ": 55411,
+            "Ort": "Bingen am Rhein",
+            "Name": "KiKuBi",
+            "Vorführsäle": [
+                {
+                    "Bezeichnung": null,
+                    "Reihen": [
+                        {
+                            "Reihennummer": 1,
+                            "Rang": 1,
+                            "Plätze": 10
+                        },
+                        {
+                            "Reihennummer": 2,
+                            "Rang": 1,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 3,
+                            "Rang": 1,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 4,
+                            "Rang": 1,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 5,
+                            "Rang": 1,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 6,
+                            "Rang": 1,
+                            "Plätze": 10
+                        },
+                        {
+                            "Reihennummer": 7,
+                            "Rang": 1,
+                            "Plätze": 10
+                        },
+                        {
+                            "Reihennummer": 8,
+                            "Rang": 1,
+                            "Plätze": 10
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Hausnr": "33",
+            "Straße": "Karl-Marx-Allee",
+            "PLZ": 10178,
+            "Ort": "Berlin",
+            "Name": "Kino International",
+            "Vorführsäle": [
+                {
+                    "Bezeichnung": "der kleine",
+                    "Reihen": [
+                        {
+                            "Reihennummer": 1,
+                            "Rang": 1,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 2,
+                            "Rang": 1,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 3,
+                            "Rang": 1,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 4,
+                            "Rang": 1,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 5,
+                            "Rang": 1,
+                            "Plätze": 20
+                        }
+                    ]
+                },
+                {
+                    "Bezeichnung": "der große",
+                    "Reihen": [
+                        {
+                            "Reihennummer": 1,
+                            "Rang": 1,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 2,
+                            "Rang": 1,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 3,
+                            "Rang": 1,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 4,
+                            "Rang": 1,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 5,
+                            "Rang": 2,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 6,
+                            "Rang": 2,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 7,
+                            "Rang": 2,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 8,
+                            "Rang": 2,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 9,
+                            "Rang": 2,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 10,
+                            "Rang": 2,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 11,
+                            "Rang": 3,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 12,
+                            "Rang": 3,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 13,
+                            "Rang": 3,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 14,
+                            "Rang": 3,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 15,
+                            "Rang": 3,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 16,
+                            "Rang": 4,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 17,
+                            "Rang": 4,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 18,
+                            "Rang": 4,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 19,
+                            "Rang": 4,
+                            "Plätze": 20
+                        },
+                        {
+                            "Reihennummer": 20,
+                            "Rang": 4,
+                            "Plätze": 20
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
