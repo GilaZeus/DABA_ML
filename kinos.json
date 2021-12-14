@@ -1,37 +1,37 @@
 {
-    "Kinos": [
+    "Kino": [
         {
             "Hausnr": "1",
             "Straße": "Holzhofstraße",
             "PLZ": 55116,
             "Ort": "Mainz",
             "Name": "CineStar Mainz",
-            "Vorführsäle": [
+            "Vorführsaal": [
                 {
                     "Bezeichnung": "1.",
-                    "Reihen": [
+                    "Reihe": [
                         {
-                            "Reihennummer": 1,
+                            "Reihenummer": 1,
                             "Rang": 1,
                             "Plätze": 10
                         },
                         {
-                            "Reihennummer": 2,
+                            "Reihenummer": 2,
                             "Rang": 1,
                             "Plätze": 10
                         },
                         {
-                            "Reihennummer": 3,
+                            "Reihenummer": 3,
                             "Rang": 2,
                             "Plätze": 10
                         },
                         {
-                            "Reihennummer": 4,
+                            "Reihenummer": 4,
                             "Rang": 2,
                             "Plätze": 10
                         },
                         {
-                            "Reihennummer": 5,
+                            "Reihenummer": 5,
                             "Rang": 3,
                             "Plätze": 10
                         }
@@ -39,29 +39,29 @@
                 },
                 {
                     "Bezeichnung": "2.",
-                    "Reihen": [
+                    "Reihe": [
                         {
-                            "Reihennummer": 1,
+                            "Reihenummer": 1,
                             "Rang": 1,
                             "Plätze": 10
                         },
                         {
-                            "Reihennummer": 2,
+                            "Reihenummer": 2,
                             "Rang": 1,
                             "Plätze": 10
                         },
                         {
-                            "Reihennummer": 3,
+                            "Reihenummer": 3,
                             "Rang": 2,
                             "Plätze": 10
                         },
                         {
-                            "Reihennummer": 4,
+                            "Reihenummer": 4,
                             "Rang": 2,
                             "Plätze": 10
                         },
                         {
-                            "Reihennummer": 5,
+                            "Reihenummer": 5,
                             "Rang": 3,
                             "Plätze": 10
                         }
@@ -69,34 +69,34 @@
                 },
                 {
                     "Bezeichnung": "3.",
-                    "Reihen": [
+                    "Reihe": [
                         {
-                            "Reihennummer": 1,
+                            "Reihenummer": 1,
                             "Rang": 1,
                             "Plätze": 10
                         },
                         {
-                            "Reihennummer": 2,
+                            "Reihenummer": 2,
                             "Rang": 1,
                             "Plätze": 10
                         },
                         {
-                            "Reihennummer": 3,
+                            "Reihenummer": 3,
                             "Rang": 2,
                             "Plätze": 10
                         },
                         {
-                            "Reihennummer": 4,
+                            "Reihenummer": 4,
                             "Rang": 2,
                             "Plätze": 10
                         },
                         {
-                            "Reihennummer": 5,
+                            "Reihenummer": 5,
                             "Rang": 3,
                             "Plätze": 10
                         },
                         {
-                            "Reihennummer": 6,
+                            "Reihenummer": 6,
                             "Rang": 3,
                             "Plätze": 10
                         }
@@ -110,47 +110,47 @@
             "PLZ": 56070,
             "Ort": "Koblenz",
             "Name": "KINOPOLIS",
-            "Vorführsäle": [
+            "Vorführsaal": [
                 {
                     "Bezeichnung": "der rote",
-                    "Reihen": [
+                    "Reihe": [
                         {
-                            "Reihennummer": 1,
+                            "Reihenummer": 1,
                             "Rang": 1,
                             "Plätze": 10
                         },
                         {
-                            "Reihennummer": 2,
+                            "Reihenummer": 2,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 3,
+                            "Reihenummer": 3,
                             "Rang": 2,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 4,
+                            "Reihenummer": 4,
                             "Rang": 2,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 5,
+                            "Reihenummer": 5,
                             "Rang": 2,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 6,
+                            "Reihenummer": 6,
                             "Rang": 2,
                             "Plätze": 10
                         },
                         {
-                            "Reihennummer": 7,
+                            "Reihenummer": 7,
                             "Rang": 2,
                             "Plätze": 10
                         },
                         {
-                            "Reihennummer": 8,
+                            "Reihenummer": 8,
                             "Rang": 2,
                             "Plätze": 10
                         }
@@ -158,44 +158,44 @@
                 },
                 {
                     "Bezeichnung": "der blaue",
-                    "Reihen": [
+                    "Reihe": [
                         {
-                            "Reihennummer": 1,
+                            "Reihenummer": 1,
                             "Rang": 1,
                             "Plätze": 10
                         },
                         {
-                            "Reihennummer": 2,
+                            "Reihenummer": 2,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 3,
+                            "Reihenummer": 3,
                             "Rang": 2,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 4,
+                            "Reihenummer": 4,
                             "Rang": 2,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 5,
+                            "Reihenummer": 5,
                             "Rang": 2,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 6,
+                            "Reihenummer": 6,
                             "Rang": 2,
                             "Plätze": 10
                         },
                         {
-                            "Reihennummer": 7,
+                            "Reihenummer": 7,
                             "Rang": 2,
                             "Plätze": 10
                         },
                         {
-                            "Reihennummer": 8,
+                            "Reihenummer": 8,
                             "Rang": 2,
                             "Plätze": 10
                         }
@@ -209,47 +209,47 @@
             "PLZ": 55411,
             "Ort": "Bingen am Rhein",
             "Name": "KiKuBi",
-            "Vorführsäle": [
+            "Vorführsaal": [
                 {
                     "Bezeichnung": null,
-                    "Reihen": [
+                    "Reihe": [
                         {
-                            "Reihennummer": 1,
+                            "Reihenummer": 1,
                             "Rang": 1,
                             "Plätze": 10
                         },
                         {
-                            "Reihennummer": 2,
+                            "Reihenummer": 2,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 3,
+                            "Reihenummer": 3,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 4,
+                            "Reihenummer": 4,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 5,
+                            "Reihenummer": 5,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 6,
+                            "Reihenummer": 6,
                             "Rang": 1,
                             "Plätze": 10
                         },
                         {
-                            "Reihennummer": 7,
+                            "Reihenummer": 7,
                             "Rang": 1,
                             "Plätze": 10
                         },
                         {
-                            "Reihennummer": 8,
+                            "Reihenummer": 8,
                             "Rang": 1,
                             "Plätze": 10
                         }
@@ -263,32 +263,32 @@
             "PLZ": 10178,
             "Ort": "Berlin",
             "Name": "Kino International",
-            "Vorführsäle": [
+            "Vorführsaal": [
                 {
                     "Bezeichnung": "der kleine",
-                    "Reihen": [
+                    "Reihe": [
                         {
-                            "Reihennummer": 1,
+                            "Reihenummer": 1,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 2,
+                            "Reihenummer": 2,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 3,
+                            "Reihenummer": 3,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 4,
+                            "Reihenummer": 4,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 5,
+                            "Reihenummer": 5,
                             "Rang": 1,
                             "Plätze": 20
                         }
@@ -296,104 +296,104 @@
                 },
                 {
                     "Bezeichnung": "der große",
-                    "Reihen": [
+                    "Reihe": [
                         {
-                            "Reihennummer": 1,
+                            "Reihenummer": 1,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 2,
+                            "Reihenummer": 2,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 3,
+                            "Reihenummer": 3,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 4,
+                            "Reihenummer": 4,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 5,
+                            "Reihenummer": 5,
                             "Rang": 2,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 6,
+                            "Reihenummer": 6,
                             "Rang": 2,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 7,
+                            "Reihenummer": 7,
                             "Rang": 2,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 8,
+                            "Reihenummer": 8,
                             "Rang": 2,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 9,
+                            "Reihenummer": 9,
                             "Rang": 2,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 10,
+                            "Reihenummer": 10,
                             "Rang": 2,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 11,
+                            "Reihenummer": 11,
                             "Rang": 3,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 12,
+                            "Reihenummer": 12,
                             "Rang": 3,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 13,
+                            "Reihenummer": 13,
                             "Rang": 3,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 14,
+                            "Reihenummer": 14,
                             "Rang": 3,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 15,
+                            "Reihenummer": 15,
                             "Rang": 3,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 16,
+                            "Reihenummer": 16,
                             "Rang": 4,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 17,
+                            "Reihenummer": 17,
                             "Rang": 4,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 18,
+                            "Reihenummer": 18,
                             "Rang": 4,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 19,
+                            "Reihenummer": 19,
                             "Rang": 4,
                             "Plätze": 20
                         },
                         {
-                            "Reihennummer": 20,
+                            "Reihenummer": 20,
                             "Rang": 4,
                             "Plätze": 20
                         }

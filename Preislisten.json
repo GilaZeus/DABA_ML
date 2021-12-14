@@ -1,0 +1,127 @@
+{
+    "Preisliste": [
+        {
+            "Basispreis": [
+                {
+                    "Wert": 12,
+                    "Rang": 1
+                },
+                {
+                    "Wert": 11.5,
+                    "Rang": 2
+                },
+                {
+                    "Wert": 11,
+                    "Rang": 3
+                },
+                {
+                    "Wert": 10.5,
+                    "Rang": 4
+                },
+                {
+                    "Wert": 10,
+                    "Rang": 5
+                }
+            ],
+            "Preismodifikation": [
+                {
+                    "Art": "Abendvorstelllung",
+                    "Höhe": 1
+                },
+                {
+                    "Art": "Kind",
+                    "Höhe": -1
+                },
+                {
+                    "Art": "ist_3D",
+                    "Höhe": 0.5
+                }
+            ]
+        },
+        {
+            "Basispreis": [
+                {
+                    "Wert": 10,
+                    "Rang": 1
+                }
+            ],
+            "Preismodifikation": []
+        },
+        {
+            "Basispreis": [
+                {
+                    "Wert": 9,
+                    "Rang": 1
+                },
+                {
+                    "Wert": 9,
+                    "Rang": 2
+                },
+                {
+                    "Wert": 8.75,
+                    "Rang": 3
+                }
+            ],
+            "Preismodifikation": [
+                {
+                    "Art": "Abendvorstelllung",
+                    "Höhe": 1
+                },
+                {
+                    "Art": "Kind",
+                    "Höhe": -1
+                },
+                {
+                    "Art": "ist_3D",
+                    "Höhe": 0.5
+                }
+            ]
+        },
+        {
+            "Basispreis": [
+                {
+                    "Wert": 12,
+                    "Rang": 1
+                },
+                {
+                    "Wert": 11.5,
+                    "Rang": 2
+                },
+                {
+                    "Wert": 11,
+                    "Rang": 3
+                },
+                {
+                    "Wert": 10.5,
+                    "Rang": 4
+                },
+                {
+                    "Wert": 10,
+                    "Rang": 5
+                }
+            ],
+            "Preismodifikation": [
+                {
+                    "Art": "Sondervorstellung",
+                    "Höhe": 1
+                },
+                {
+                    "Art": "Kind",
+                    "Höhe": -1
+                },
+                {
+                    "Art": "Student",
+                    "Höhe": -1
+                },
+                {
+                    "Art": "ist_3D",
+                    "Höhe": 1
+                },
+                {
+                    "Art": "Midnight_Movie",
+                    "Höhe": -1
+                }
+            ]
+        }
+    ]
+}

@@ -123,18 +123,13 @@ CREATE TABLE Wochentag
 
 CREATE TABLE Kundengruppe
 (
-    Kundengruppe_ID INT         GENERATED ALWAYS AS IDENTITY,
-    Bezeichnung     VARCHAR(30) NOT NULL,
-    PRIMARY KEY (Kundengruppe_ID),
-    UNIQUE (Bezeichnung)
+    Bezeichnung     VARCHAR(30) PRIMARY KEY
 );
 
 CREATE TABLE Genre
 (
-    Genre_ID    INT         GENERATED ALWAYS AS IDENTITY,
-    Bezeichnung VARCHAR(30) NOT NULL,
-    PRIMARY KEY (Genre_ID),
-    UNIQUE (Bezeichnung)
+    Bezeichnung     VARCHAR(30) PRIMARY KEY,
+    Beschreibung    VARCHAR(255)
 );
 
 CREATE TABLE Gültigkeitsbereich
@@ -244,11 +239,11 @@ CREATE TABLE Sitzplatz
 CREATE TABLE Film
 (
     Film_ID             INT             GENERATED ALWAYS AS IDENTITY,
-    Titel               INT             NOT NULL,
-    Produktionsfirma    INT             NOT NULL,
+    Titel               VARCHAR(30)     NOT NULL,
+    Produktionsfirma    VARCHAR(30)     NOT NULL,
     Produktionsjahr     INT             NOT NULL,
     Altersfreigabe      VARCHAR(6)      NOT NULL,
-    Genre_ID            INT             NOT NULL,
+    Genre               VARCHAR(30)     NOT NULL,
     Beschreibung        VARCHAR(255),
     Spieldauer          INT             NOT NULL,
     ist_3D              VARCHAR(1)      NOT NULL,
@@ -260,8 +255,8 @@ CREATE TABLE Film
            END),
     PRIMARY KEY (Film_ID),
     FOREIGN KEY
-        (Genre_ID)
-        REFERENCES Genre(Genre_ID),
+        (Genre)
+        REFERENCES Genre(Bezeichnung),
     UNIQUE 
     (
         Titel,
@@ -377,38 +372,6 @@ CREATE TABLE Zeitplan
         ON DELETE CASCADE
 );
 
-CREATE TABLE Karte
-(
-    Kartennummer    INT         GENERATED ALWAYS AS IDENTITY,
-    Reservierung    VARCHAR(30),
-    Kundengruppe_ID INT         NOT NULL,
-    Sitznummer      INT         NOT NULL,
-    Reihennummer    INT         NOT NULL,
-    Saal_ID         INT         NOT NULL,
-    Kino_ID         INT         NOT NULL,
-    Vorführung_ID   INT         NOT NULL,
-    Verkaufspreis   FLOAT,
-    PRIMARY KEY (Kartennummer),
-    FOREIGN KEY
-    (
-        Sitznummer,
-        Reihennummer,
-        Saal_ID,
-        Kino_ID
-    )
-        REFERENCES Sitzplatz
-        (
-            Sitznummer,
-            Reihennummer,
-            Saal_ID,
-            Kino_ID
-        ),
-    FOREIGN KEY (Vorführung_ID)
-        REFERENCES Vorführung(Vorführung_ID),
-    FOREIGN KEY (Kundengruppe_ID)
-        REFERENCES Kundengruppe(Kundengruppe_ID)
-);
-
 CREATE TABLE Lokalität
 (
     Spielplan_ID    INT,
@@ -434,6 +397,38 @@ CREATE TABLE Lokalität
     FOREIGN KEY (Spielplan_ID)
         REFERENCES Spielplan(Spielplan_ID)
         ON DELETE CASCADE
+);
+
+CREATE TABLE Karte
+(
+    Kartennummer    INT         GENERATED ALWAYS AS IDENTITY,
+    Reservierung    VARCHAR(30),
+    Kundengruppe    VARCHAR(30) NOT NULL,
+    Sitznummer      INT         NOT NULL,
+    Reihennummer    INT         NOT NULL,
+    Saal_ID         INT         NOT NULL,
+    Kino_ID         INT         NOT NULL,
+    Vorführung_ID   INT         NOT NULL,
+    Verkaufspreis   FLOAT,
+    PRIMARY KEY (Kartennummer),
+    FOREIGN KEY
+    (
+        Sitznummer,
+        Reihennummer,
+        Saal_ID,
+        Kino_ID
+    )
+        REFERENCES Sitzplatz
+        (
+            Sitznummer,
+            Reihennummer,
+            Saal_ID,
+            Kino_ID
+        ),
+    FOREIGN KEY (Vorführung_ID)
+        REFERENCES Vorführung(Vorführung_ID),
+    FOREIGN KEY (Kundengruppe)
+        REFERENCES Kundengruppe(Bezeichnung)
 );
 
 commit;
