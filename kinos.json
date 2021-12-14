@@ -11,27 +11,27 @@
                     "Bezeichnung": "1.",
                     "Reihe": [
                         {
-                            "Reihenummer": 1,
+                            "Reihennummer": 1,
                             "Rang": 1,
                             "Plätze": 10
                         },
                         {
-                            "Reihenummer": 2,
+                            "Reihennummer": 2,
                             "Rang": 1,
                             "Plätze": 10
                         },
                         {
-                            "Reihenummer": 3,
+                            "Reihennummer": 3,
                             "Rang": 2,
                             "Plätze": 10
                         },
                         {
-                            "Reihenummer": 4,
+                            "Reihennummer": 4,
                             "Rang": 2,
                             "Plätze": 10
                         },
                         {
-                            "Reihenummer": 5,
+                            "Reihennummer": 5,
                             "Rang": 3,
                             "Plätze": 10
                         }
@@ -41,27 +41,27 @@
                     "Bezeichnung": "2.",
                     "Reihe": [
                         {
-                            "Reihenummer": 1,
+                            "Reihennummer": 1,
                             "Rang": 1,
                             "Plätze": 10
                         },
                         {
-                            "Reihenummer": 2,
+                            "Reihennummer": 2,
                             "Rang": 1,
                             "Plätze": 10
                         },
                         {
-                            "Reihenummer": 3,
+                            "Reihennummer": 3,
                             "Rang": 2,
                             "Plätze": 10
                         },
                         {
-                            "Reihenummer": 4,
+                            "Reihennummer": 4,
                             "Rang": 2,
                             "Plätze": 10
                         },
                         {
-                            "Reihenummer": 5,
+                            "Reihennummer": 5,
                             "Rang": 3,
                             "Plätze": 10
                         }
@@ -71,32 +71,32 @@
                     "Bezeichnung": "3.",
                     "Reihe": [
                         {
-                            "Reihenummer": 1,
+                            "Reihennummer": 1,
                             "Rang": 1,
                             "Plätze": 10
                         },
                         {
-                            "Reihenummer": 2,
+                            "Reihennummer": 2,
                             "Rang": 1,
                             "Plätze": 10
                         },
                         {
-                            "Reihenummer": 3,
+                            "Reihennummer": 3,
                             "Rang": 2,
                             "Plätze": 10
                         },
                         {
-                            "Reihenummer": 4,
+                            "Reihennummer": 4,
                             "Rang": 2,
                             "Plätze": 10
                         },
                         {
-                            "Reihenummer": 5,
+                            "Reihennummer": 5,
                             "Rang": 3,
                             "Plätze": 10
                         },
                         {
-                            "Reihenummer": 6,
+                            "Reihennummer": 6,
                             "Rang": 3,
                             "Plätze": 10
                         }
@@ -115,42 +115,42 @@
                     "Bezeichnung": "der rote",
                     "Reihe": [
                         {
-                            "Reihenummer": 1,
+                            "Reihennummer": 1,
                             "Rang": 1,
                             "Plätze": 10
                         },
                         {
-                            "Reihenummer": 2,
+                            "Reihennummer": 2,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 3,
+                            "Reihennummer": 3,
                             "Rang": 2,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 4,
+                            "Reihennummer": 4,
                             "Rang": 2,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 5,
+                            "Reihennummer": 5,
                             "Rang": 2,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 6,
+                            "Reihennummer": 6,
                             "Rang": 2,
                             "Plätze": 10
                         },
                         {
-                            "Reihenummer": 7,
+                            "Reihennummer": 7,
                             "Rang": 2,
                             "Plätze": 10
                         },
                         {
-                            "Reihenummer": 8,
+                            "Reihennummer": 8,
                             "Rang": 2,
                             "Plätze": 10
                         }
@@ -160,42 +160,42 @@
                     "Bezeichnung": "der blaue",
                     "Reihe": [
                         {
-                            "Reihenummer": 1,
+                            "Reihennummer": 1,
                             "Rang": 1,
                             "Plätze": 10
                         },
                         {
-                            "Reihenummer": 2,
+                            "Reihennummer": 2,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 3,
+                            "Reihennummer": 3,
                             "Rang": 2,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 4,
+                            "Reihennummer": 4,
                             "Rang": 2,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 5,
+                            "Reihennummer": 5,
                             "Rang": 2,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 6,
+                            "Reihennummer": 6,
                             "Rang": 2,
                             "Plätze": 10
                         },
                         {
-                            "Reihenummer": 7,
+                            "Reihennummer": 7,
                             "Rang": 2,
                             "Plätze": 10
                         },
                         {
-                            "Reihenummer": 8,
+                            "Reihennummer": 8,
                             "Rang": 2,
                             "Plätze": 10
                         }
@@ -214,42 +214,42 @@
                     "Bezeichnung": null,
                     "Reihe": [
                         {
-                            "Reihenummer": 1,
+                            "Reihennummer": 1,
                             "Rang": 1,
                             "Plätze": 10
                         },
                         {
-                            "Reihenummer": 2,
+                            "Reihennummer": 2,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 3,
+                            "Reihennummer": 3,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 4,
+                            "Reihennummer": 4,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 5,
+                            "Reihennummer": 5,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 6,
+                            "Reihennummer": 6,
                             "Rang": 1,
                             "Plätze": 10
                         },
                         {
-                            "Reihenummer": 7,
+                            "Reihennummer": 7,
                             "Rang": 1,
                             "Plätze": 10
                         },
                         {
-                            "Reihenummer": 8,
+                            "Reihennummer": 8,
                             "Rang": 1,
                             "Plätze": 10
                         }
@@ -268,27 +268,27 @@
                     "Bezeichnung": "der kleine",
                     "Reihe": [
                         {
-                            "Reihenummer": 1,
+                            "Reihennummer": 1,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 2,
+                            "Reihennummer": 2,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 3,
+                            "Reihennummer": 3,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 4,
+                            "Reihennummer": 4,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 5,
+                            "Reihennummer": 5,
                             "Rang": 1,
                             "Plätze": 20
                         }
@@ -298,102 +298,102 @@
                     "Bezeichnung": "der große",
                     "Reihe": [
                         {
-                            "Reihenummer": 1,
+                            "Reihennummer": 1,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 2,
+                            "Reihennummer": 2,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 3,
+                            "Reihennummer": 3,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 4,
+                            "Reihennummer": 4,
                             "Rang": 1,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 5,
+                            "Reihennummer": 5,
                             "Rang": 2,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 6,
+                            "Reihennummer": 6,
                             "Rang": 2,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 7,
+                            "Reihennummer": 7,
                             "Rang": 2,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 8,
+                            "Reihennummer": 8,
                             "Rang": 2,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 9,
+                            "Reihennummer": 9,
                             "Rang": 2,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 10,
+                            "Reihennummer": 10,
                             "Rang": 2,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 11,
+                            "Reihennummer": 11,
                             "Rang": 3,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 12,
+                            "Reihennummer": 12,
                             "Rang": 3,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 13,
+                            "Reihennummer": 13,
                             "Rang": 3,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 14,
+                            "Reihennummer": 14,
                             "Rang": 3,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 15,
+                            "Reihennummer": 15,
                             "Rang": 3,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 16,
+                            "Reihennummer": 16,
                             "Rang": 4,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 17,
+                            "Reihennummer": 17,
                             "Rang": 4,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 18,
+                            "Reihennummer": 18,
                             "Rang": 4,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 19,
+                            "Reihennummer": 19,
                             "Rang": 4,
                             "Plätze": 20
                         },
                         {
-                            "Reihenummer": 20,
+                            "Reihennummer": 20,
                             "Rang": 4,
                             "Plätze": 20
                         }

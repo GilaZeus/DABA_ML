@@ -10,7 +10,52 @@ def create_sql_string(column):
 
 
 def generate_kinos(data):
-    pass
+    with open(data, "r") as json_file:
+        voorhees = json.load(json_file)
+        kino_i = 1
+        saal_i = 1
+        for kino in voorhees["Kino"]:
+            print("INSERT INTO Kino",
+                  "    (Hausnr, Straße, PLZ, ORT, Name)",
+                  "VALUES", sep="\n", end ="\n(\n    ")
+            print(create_sql_string(kino["Hausnr"]),
+                  create_sql_string(kino["Straße"]),
+                  kino["PLZ"],
+                  create_sql_string(kino["Ort"]),
+                  create_sql_string(kino["Name"]),
+                  sep=",\n    ", end="\n);\n\n")
+
+            for saal in kino["Vorführsaal"]:
+                print("INSERT INTO Vorführsaal",
+                      "    (Kino_ID, Bezeichnung)",
+                      "VALUES", sep="\n", end ="\n")
+                if saal["Bezeichnung"] != None:
+                    print("    (" + str(kino_i) + ", \'" + saal["Bezeichnung"] + "\');\n")
+                else:
+                    print("    (" + str(kino_i) + ", NULL);")
+                
+                for reihe in saal["Reihe"]:
+                    print("INSERT INTO Reihe",
+                          "    (Reihennummer, Saal_ID, Kino_ID, Rangnummer)",
+                          "VALUES", sep="\n", end ="\n(\n    ")
+                    print(reihe["Reihennummer"],
+                          saal_i,
+                          kino_i,
+                          reihe["Rang"],
+                          sep=",\n    ", end="\n);\n\n")
+                    
+                    for platz in range(1, reihe["Plätze"] + 1):
+                        print("INSERT INTO Sitzplatz",
+                              "    (Sitznummer, Reihennummer, Saal_ID, Kino_ID)",
+                              "VALUES", sep="\n", end ="\n(\n    ")
+                        print(platz,
+                              reihe["Reihennummer"],
+                              saal_i,
+                              kino_i,
+                              sep=",\n    ", end="\n);\n\n")
+
+                saal_i += 1
+            kino_i += 1
 
 
 def generate_filme(data):
@@ -18,7 +63,8 @@ def generate_filme(data):
         for row in csv.DictReader(csv_file):
             print("INSERT INTO Film",
                   "    (Titel, Produktionsfirma, Produktionsjahr, Altersfreigabe, Genre, Beschreibung, Spieldauer, ist_3D)"
-                  "VALUES", sep="\n", end="\n(")
+                  "VALUES", sep="\n", end="\n(\n    ")
+            
             print(create_sql_string(row["Titel"]),
                   create_sql_string(row["Produktionsfirma"]),
                   row["Produktionsjahr"],
@@ -27,12 +73,12 @@ def generate_filme(data):
                   create_sql_string(row["Beschreibung"]),
                   row["Spieldauer"],
                   create_sql_string(row["ist_3D"]),
-                  sep=", ", end=");\n\n")
-
+                  sep=",\n    ", end="\n);\n\n")
 
 
 def generate_preis(data):
     pass
+
 
 if __name__ == "__main__":
     if sys.argv[1] == "-kino":

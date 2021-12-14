@@ -431,4 +431,4 @@ CREATE TABLE Karte
         REFERENCES Kundengruppe(Bezeichnung)
 );
 
-commit;
+COMMIT;
