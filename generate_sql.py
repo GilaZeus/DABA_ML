@@ -77,7 +77,11 @@ def generate_filme(data):
 
 
 def generate_preis(data):
-    pass
+    with open(data, "r") as json_file:
+        voorhees = json.load(json_file)
+
+        for liste in voorhees["Preisliste"]:
+            pass
 
 
 if __name__ == "__main__":
