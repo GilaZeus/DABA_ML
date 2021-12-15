@@ -80,8 +80,40 @@ def generate_preis(data):
     with open(data, "r") as json_file:
         voorhees = json.load(json_file)
 
+        liste_i = 1
+        preis_i = 1
+        mod_i = 1
         for liste in voorhees["Preisliste"]:
-            pass
+            print("INSERT INTO Preisliste (Preisliste_ID) VALUES (DEFAULT);\n")
+
+            for basispreis in liste["Basispreis"]:
+                print("INSERT INTO Basispreis (Wert) VALUES (" + str(basispreis["Wert"]) + ");\n")
+                print("INSERT INTO Preis_Anwendung",
+                      "    (Basispreis_ID, Preisliste_ID)",
+                      "VALUES",
+                      "    (" + str(preis_i) + ", " + str(liste_i),
+                      sep="\n", end=");\n\n")
+                print("INSERT INTO Rang_Preis",
+                      "    (Rangnummer, Basispreis_ID)",
+                      "VALUES",
+                      "    (" + str(basispreis["Rang"]) + ", " + str(preis_i),
+                      sep="\n", end=");\n\n")
+                preis_i += 1
+            
+            for modif in liste["Preismodifikation"]:
+                print("INSERT INTO Preismodifikation",
+                      "    (Art, Höhe)\nVALUES\n(",
+                      "    " + create_sql_string(modif["Art"]) + ",",
+                      "    " + str(modif["Höhe"]),
+                      ");", sep="\n")
+                print("INSERT INTO Modifikation_Benutzung",
+                      "    (Preismodifikation_ID, Preisliste_ID)",
+                      "VALUES",
+                      "    (" + str(mod_i) + ", " + str(liste_i),
+                      sep="\n", end=");\n\n")
+                mod_i += 1
+            liste_i += 1
+
 
 
 if __name__ == "__main__":
@@ -90,4 +122,4 @@ if __name__ == "__main__":
     elif sys.argv[1] == "-film":
         generate_filme(sys.argv[2])
     elif sys.argv[1] == "-preis":
-        generate_preis(syd.argv[2])
+        generate_preis(sys.argv[2])
