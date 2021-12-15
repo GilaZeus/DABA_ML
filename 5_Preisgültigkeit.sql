@@ -72,8 +72,8 @@ VALUES
 (
     4,
     4,
-    to_date('01-01-2022', 'DD-MM-YYYY'),
-    to_date('30-06-2023', 'DD-MM-YYYY')
+    to_date('01-07-2022', 'DD-MM-YYYY'),
+    to_date('31-12-2023', 'DD-MM-YYYY')
 );
 
 COMMIT;
