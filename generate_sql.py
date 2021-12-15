@@ -115,6 +115,18 @@ def generate_preis(data):
             liste_i += 1
 
 
+def generate_zeitslots(data):
+    with open(data) as csv_file:
+        for row in csv.DictReader(csv_file):
+            print("INSERT INTO Zeitslot",
+                  "    (Uhrzeit, Bezeichnung)"
+                  "VALUES", sep="\n", end="\n(\n    ")
+            
+            print(
+                  row["Uhrzeit"],
+                  create_sql_string(row["Bezeichnung"]),
+                  sep=",\n    ", end="\n);\n\n")
+
 
 if __name__ == "__main__":
     if sys.argv[1] == "-kino":
@@ -123,3 +135,5 @@ if __name__ == "__main__":
         generate_filme(sys.argv[2])
     elif sys.argv[1] == "-preis":
         generate_preis(sys.argv[2])
+    elif sys.argv[1] == "-zeit":
+        generate_zeitslots(sys.argv[2])
