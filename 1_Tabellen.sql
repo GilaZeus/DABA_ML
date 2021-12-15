@@ -317,7 +317,7 @@ CREATE TABLE Vorführung
     Vorführung_ID   INT         GENERATED ALWAYS AS IDENTITY,
     Spielplan_ID    INT         NOT NULL,
     Zeitslot_ID     INT         NOT NULL,
-    Wochentag       VARCHAR(2)  NOT NULL,
+    Datum           DATE        NOT NULL,
     Saal_ID         INT         NOT NULL,
     Kino_ID         INT         NOT NULL,
     PRIMARY KEY (Vorführung_ID),
@@ -338,13 +338,10 @@ CREATE TABLE Vorführung
             Kino_ID
         )
         ON DELETE CASCADE,
-    FOREIGN KEY (Wochentag)
-        REFERENCES Wochentag(Wochentag)
-        ON DELETE CASCADE,
     UNIQUE
     (
         Zeitslot_ID,
-        Wochentag,
+        Datum,
         Saal_ID,
         Kino_ID
     )

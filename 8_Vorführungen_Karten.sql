@@ -6,4 +6,4 @@ INSERT INTO Kundengruppe (Bezeichnung) VALUES ('Behinderte');
 
 COMMIT;
 
--- Vorführungen für Le Professional bei KuKubi:
+-- Vorführungen für Le Professional bei KuKubi, das komplett für eine Schule reserviert wurde:
