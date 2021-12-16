@@ -5,8 +5,23 @@
 
 **Benutzername**: Y37
 
-# Anmerkungen.
-1. Fast alle FOREIGN KEYs werden ON DELETE CASCADE, außer:
+# Änderungsliste
+1. Ort im Kino ist nicht mehr berechenbar: Um das zu "berechnen", müsste man eigentlich eine SQL-Tabelle mit allen PLZs und Orte anlegen, was für diesen Projekt schon zu viel ist.
+2. Vorführsäle haben jetzt eine optionale Bezeichnung und Saal_ID.
+3. Jetzt sind Reihen und Rangen nicht die Attribute von Sitzplätzen, sondern Entities.
+4. Das erlaubt uns, den Sitztnummer als Teilschlüssel zu nutzen und sich auf Platz_ID zu verzichten.
+5. Sitzplätze agregieren sich zu Reihen, die danach zu Vorführsäle agregieren. Reihen sind mit Rängen verbunden.
+6. Preis_Anwendung hat jetzt keinen Attribut "Zum_Rang", Preise für Rang werden durch den Relationship "Rang_Preis" modeliert.
+7. Attribut Kundengruppe wurde zum ganzen Entity.
+8. Das gleiche gilt für Genre.
+9. Kartensystem ist jetzt überarbeitet: Die idee ist nicht mehr, die Karten für jede Vorführung am Start zu generieren und danach in ist_verkauft zu markieren, ob sie verkauft wurden: Stattdessen generieren wir nur die verkauften Karten.
+10. Das System von Vorführungen, Zeitplan und örtliche Belegung von Spielplänen ist jetzt komplett neu gebaut. Spielpläne definieren, wo und wann die Vorführungen während der Gültigkeit des Spielplans stattfinden, die Vorführungen selbst bezeichnen eine konkrete Filmausführung an einem genauen Tag.
+11. Jahr_Preisliste gelöscht, Von_ und Bis_Preisliste haben ihren Datentyp geändert. Fast überall wurden die Datentyps geändert (weil wir jetzt wissen, welche davon durch SQL unterstützt werden).
+12. Zeitslots haben jetzt keinen Wochentag. Wochentag wird erst im Zeitplan fixiert.
+13. Die Unique-Constraints wurden beim Spielplan entfernt.
+
+# Anmerkungen
+1. Fast alle `FOREIGN KEY`s werden `ON DELETE CASCADE`, außer:
 	1. Rangnummer in einer Reihe: Ränge zu löschen ist nur dann erlaubt, wenn keine Reihen mit denen assoziert sind.
 	2. Genre im Film: 
 	3. Alle Foreign Keys in Karte: Wenn eine Karte schon verkauft wurde, darf man nichts löschen, die Vorführung muss stattfinden und gespeichert werden.
