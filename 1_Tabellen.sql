@@ -296,7 +296,11 @@ CREATE TABLE Spielplan
         REFERENCES Film(Film_ID)
         ON DELETE CASCADE,
     CONSTRAINT no_time_paradoxes_plan CHECK
+    (
+        (to_char (Von_Spielplan, 'DY', 'NLS_DATE_LANGUAGE=ENGLISH') IN ('MON')) AND
+        (to_char (Bis_Spielplan, 'DY', 'NLS_DATE_LANGUAGE=ENGLISH') IN ('MON')) AND
         (Bis_Spielplan >= Von_Spielplan)
+    )
 );
 
 CREATE TABLE Vorführung

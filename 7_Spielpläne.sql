@@ -21,8 +21,8 @@ VALUES
 (
     3,
     5,
-    to_date('01-01-2022', 'DD-MM-YYYY'),
-    to_date('01-01-2023', 'DD-MM-YYYY')
+    to_date('03-01-2022', 'DD-MM-YYYY'),
+    to_date('26-12-2022', 'DD-MM-YYYY')
 );
 INSERT INTO Lokalität
 (
@@ -63,8 +63,8 @@ VALUES
 (
     1,
     3,
-    to_date('01-01-2022', 'DD-MM-YYYY'),
-    to_date('14-02-2023', 'DD-MM-YYYY')
+    to_date('03-01-2022', 'DD-MM-YYYY'),
+    to_date('14-02-2022', 'DD-MM-YYYY')
 );
 INSERT INTO Lokalität
 (
@@ -177,8 +177,8 @@ VALUES
 (
     4,
     2,
-    to_date('15-10-2023', 'DD-MM-YYYY'),
-    to_date('22-10-2023', 'DD-MM-YYYY')
+    to_date('17-10-2022', 'DD-MM-YYYY'),
+    to_date('17-10-2022', 'DD-MM-YYYY')
 );
 INSERT INTO Lokalität
 (
