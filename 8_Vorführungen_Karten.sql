@@ -19,7 +19,7 @@ VALUES
 (
     1,
     13,
-    to_date('09-01-2022', 'DD-MM-YYYY'),
+    to_date('09-01-2023', 'DD-MM-YYYY'),
     6,
     3
 );
@@ -647,7 +647,7 @@ VALUES
 (
     3,
     1,
-    to_date('18-10-2022', 'DD-MM-YYYY'),
+    to_date('18-10-2023', 'DD-MM-YYYY'),
     8,
     4
 );
@@ -670,7 +670,7 @@ VALUES
     1,
     8,
     4,
-    21
+    2
 );
 
 INSERT INTO Karte
@@ -689,7 +689,7 @@ VALUES
     1,
     8,
     4,
-    21
+    2
 );
 
 COMMIT;

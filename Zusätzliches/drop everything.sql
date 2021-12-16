@@ -20,3 +20,5 @@ drop table VORFÜHRUNG;
 drop table WOCHENTAG;
 drop table ZEITPLAN;
 drop table ZEITSLOT;
+
+COMMIT;

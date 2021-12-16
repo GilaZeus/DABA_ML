@@ -14,7 +14,6 @@ INSERT INTO Spielplan
 (
     Kino_ID,
     Film_ID,
-    Jahr_Spielplan,
     Von_Spielplan,
     Bis_Spielplan
 )
@@ -22,9 +21,8 @@ VALUES
 (
     3,
     5,
-    2022,
-    1,
-    53
+    to_date('01-01-2022', 'DD-MM-YYYY'),
+    to_date('01-01-2023', 'DD-MM-YYYY')
 );
 INSERT INTO Lokalität
 (
@@ -58,7 +56,6 @@ INSERT INTO Spielplan
 (
     Kino_ID,
     Film_ID,
-    Jahr_Spielplan,
     Von_Spielplan,
     Bis_Spielplan
 )
@@ -66,9 +63,8 @@ VALUES
 (
     1,
     3,
-    2022,
-    1,
-    5
+    to_date('01-01-2022', 'DD-MM-YYYY'),
+    to_date('14-02-2023', 'DD-MM-YYYY')
 );
 INSERT INTO Lokalität
 (
@@ -174,7 +170,6 @@ INSERT INTO Spielplan
 (
     Kino_ID,
     Film_ID,
-    Jahr_Spielplan,
     Von_Spielplan,
     Bis_Spielplan
 )
@@ -182,9 +177,8 @@ VALUES
 (
     4,
     2,
-    2022,
-    42,
-    42
+    to_date('15-10-2023', 'DD-MM-YYYY'),
+    to_date('22-10-2023', 'DD-MM-YYYY')
 );
 INSERT INTO Lokalität
 (

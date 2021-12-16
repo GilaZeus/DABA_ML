@@ -283,12 +283,11 @@ CREATE TABLE Film
 
 CREATE TABLE Spielplan
 (
-    Spielplan_ID    INT GENERATED ALWAYS AS IDENTITY,
-    Kino_ID         INT NOT NULL,
-    Film_ID         INT NOT NULL,
-    Jahr_Spielplan  INT NOT NULL,
-    Von_Spielplan   INT NOT NULL,
-    Bis_Spielplan   INT NOT NULL,
+    Spielplan_ID    INT     GENERATED ALWAYS AS IDENTITY,
+    Kino_ID         INT     NOT NULL,
+    Film_ID         INT     NOT NULL,
+    Von_Spielplan   DATE    NOT NULL,
+    Bis_Spielplan   DATE    NOT NULL,
     PRIMARY KEY (Spielplan_ID),
     FOREIGN KEY (Kino_ID)
         REFERENCES Kino(Kino_ID)
@@ -296,20 +295,8 @@ CREATE TABLE Spielplan
     FOREIGN KEY (Film_ID)
         REFERENCES Film(Film_ID)
         ON DELETE CASCADE,
-    CONSTRAINT correct_von CHECK
-    (
-        Von_Spielplan > 0   AND
-        Von_Spielplan < 54
-    ),
-    CONSTRAINT correct_bis CHECK
-    (
-        Bis_Spielplan > 0   AND
-        Bis_Spielplan < 54
-    ),
     CONSTRAINT no_time_paradoxes_plan CHECK
-        (Bis_Spielplan >= Von_Spielplan),
-    CONSTRAINT actual_year CHECK
-        (Jahr_Spielplan > 1999)
+        (Bis_Spielplan >= Von_Spielplan)
 );
 
 CREATE TABLE Vorführung

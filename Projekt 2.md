@@ -26,7 +26,7 @@
 	2. Genre im Film: 
 	3. Alle Foreign Keys in Karte: Wenn eine Karte schon verkauft wurde, darf man nichts löschen, die Vorführung muss stattfinden und gespeichert werden.
 2. Die Spalte "Verkaufspreis" bei Spielkarten ist noch bei uns leer.
-3. Die Stammdaten sind im Ordner "Stammdaten" gespeichert, das sind Filme, Genre, Kinos, Zeitslots und Preislisten. Für die Anlegung der Daten haben wir einen kleinen Skript geschrieben (`generate_sql.py`).
+3. Die Stammdaten sind im Ordner "Zusätzliches" gespeichert, das sind Filme, Genre, Kinos, Zeitslots und Preislisten. Für die Anlegung der Daten haben wir einen kleinen Skript geschrieben (`generate_sql.py`).
 
 # Erhaltung der Bijektivität
 Es ist klar, dass die ER-Schema genau die Relationsschema angeben soll, die wiederum genau die SQL-Skripte definieren muss. Aber es ist leider nicht immer möglich:
@@ -59,5 +59,4 @@ Es ist sinnvoll, einen Zeitraum zu definieren, der für Putzen und Vorbereitung 
 14. Jeder Vorführsaal muss mindestens eine Reihe haben.
 15. Jede Reihe muss mindestens einen Sitzplatz haben.
 16. Preisliste soll Basispreise für jeden Rang des Kinos enthalten.
-17. Eigentlich soll noch immer überprüft werden, wie viele Wochen in einem Jahr vorhanden sind, um den Constraint für Spielplan genauer zu machen.
-18. Datum von der Vorführung soll innerhalb von der Zeitspanne des Spielplans liegen und dem Zeitplan entsprechen.
+17. Datum von der Vorführung soll innerhalb von der Zeitspanne des Spielplans liegen und dem Zeitplan entsprechen.
